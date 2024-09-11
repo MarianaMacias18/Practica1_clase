@@ -10,13 +10,16 @@
 </head>
 
 <body>
+
+
+
     <!-- Navegación  -->
     <div class="nav">
         <a href="index.html" class="nav-link">Inicio</a>
         <a href="formulario.html" class="nav-link">Formulario</a>
     </div>
 
-    <h1 id="contact-title">Formulario de Contacto</h1>
+    <h1 id="contact-title">Formulario de Contacto {{$tipo_persona}}</h1>
 
     <!-- Sintax Blade donde realiza una validación  -->
     @if ($errors->any())
@@ -34,6 +37,12 @@
 
 
     <form method="POST" action="/contacto-recibe">
+
+        @if($tipo_persona == 'cliente')
+        <label for="no_cliente"> Numero de cliente: </label>
+        <input type="text" name="no_cliente" id="no_cliente"><br><br>
+        @endif
+
         @csrf <!-- Token CSRF  -->
         <!-- Nombre text -->
         <label for="nombre">Nombre:</label>
